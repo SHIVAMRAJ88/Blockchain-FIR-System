@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime & Witness Details</title>
+    <link rel="stylesheet" href="fir.css">
+</head>
+<body>
+    <div class="container">
+        <h1>FIR - Crime & Witness Details</h1>
+
+      <form id="crimeWitnessForm">
+        <h2>Crime Details:</h2>
+
+        <!-- <input type="text" id="crime" placeholder="Crime Type"><br><br> -->
+        <select id="crimeSelect" required>
+            <option value="">-- Select Crime Type --</option>
+            <option value="Theft">Theft</option>
+            <option value="Robbery">Robbery</option>
+            <option value="Assault">Assault</option>
+            <option value="Cyber Crime">Cyber Crime</option>
+            <option value="Domestic Violence">Domestic Violence</option>
+            <option value="Other">Other</option>
+        </select>
+        <br><br>
+
+        <input 
+            type="text" id="otherCrime" placeholder="Enter Crime Type" style="display:none;"><br><br>
+
+        <textarea id="details" placeholder="Crime Details"></textarea><br><br>
+
+        <label>Select Date:</label>
+        <input type="date" id="userDate"><br><br>
+
+        <label>Select Time:</label>
+        <input type="time" id="userTime"><br><br>
+
+        <textarea id="location" placeholder="Location of Crime"></textarea><br><br>
+
+        <input type="text" id="nameofaccused" placeholder="Name of Accused"><br><br>
+
+        <h2>Witness Details:</h2>
+
+        <input type="text" id="nameofwitness" placeholder="Name of Witness"><br><br>
+        <input type="tel" id="witnessphone" placeholder="Phone Number" 
+        pattern="[0-9]{10}" maxlength="10" required >
+            <span id="witnessPhoneError" style="color:red; font-size:14px;"></span><br><br>
+
+        <textarea id="witnessAddress" placeholder="Enter Witness full address"></textarea><br><br>
+        <input type="text" id= "witnessState" placeholder="State"><br><br>
+        <input type="text" id="witnessCity" placeholder="City"><br><br>
+        <input type="text" id="witnessPinCode" placeholder="Enter Pincode" 
+         pattern="[0-9]{6}" maxlength="6" required/><br><br>
+
+
+         <button type="submit">Submit FIR</button>
+
+      </form>
+    </div>
+    <script type="module" src="crime2.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Evidence</title>
+    <link rel="stylesheet" href="evidence.css">
+</head>
+<body>
+   <div class="container">
+        <h1>Upload Evidence</h>
+        
+        <form id="evidenceForm">
+
+            <label>Enter FIR ID</label>
+            <input type="text" id="firID" placeholder="Enter your FIR ID" required>
+
+            <label>Select an Evidence File</label>
+            <input type="file" id="evidenceFile" required>
+
+            <label>Evidence Description</label>
+            <textarea id="evidenceDesc" placeholder="Write short description..." required></textarea>
+
+            <button type="submit">Upload Evidence</button>
+        </form>
+
+        <div id="hashResult"></div>
+
+        <div class="hashResult"></div>
+
+        <div class="back-btn">
+            <a href="dashboard.html">
+                <button type="button">Go To Dashboard</button>
+            </a>
+        </div>
+   </div>
+   <script type="module" src="evidence2.js"></script>
+</body>
+</html>

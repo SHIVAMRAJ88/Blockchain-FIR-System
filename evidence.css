@@ -1,0 +1,80 @@
+body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(120deg, #141E30, #243B55);
+      min-height: 800px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      background: white;
+      padding: 35px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 450px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      text-align: center;
+      color: #243B55;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="file"],
+    textarea,
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      margin-bottom: 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    textarea {
+      height: 90px;
+      resize: none;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 15px;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      background: #243B55;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #141E30;
+    }
+
+    #hashResult {
+      margin-top: 15px;
+      font-size: 13px;
+      color: green;
+      word-break: break-all;
+      text-align: center;
+    }
+
+    .back-btn {
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .back-btn button {
+      background: #555;
+    }

@@ -1,0 +1,181 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: radial-gradient(circle at top left, #151a33, #0b0f1a);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    opacity: 0.85;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    opacity: 1;
+    color: #6c5ce7;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    height: 90vh;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 8%;
+}
+
+.content {
+    max-width: 50%;
+}
+
+.content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.content h1 span {
+    color: #6c5ce7;
+}
+
+/* 3D Container - Positioned to the right of text */
+#three-container {
+    width: 45%;
+    height: 500px;
+    outline: none;
+}
+
+/* Features Grid */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 50px 8%;
+    gap: 20px;
+}
+
+.card {
+    background: rgba(255,255,255,0.08);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.12);
+}
+
+/* Glassmorphism Sections (About & Support) */
+.content-section {
+    padding: 80px 8%;
+    display: flex;
+    justify-content: center;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 50px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 1100px;
+    text-align: center;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.tech-box {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid transparent;
+    transition: 0.3s;
+}
+
+.tech-box:hover {
+    border-color: #6c5ce7;
+    transform: translateY(-10px);
+}
+
+.tech-box i {
+    font-size: 2.5rem;
+    color: #6c5ce7;
+    margin-bottom: 15px;
+}
+
+/* Buttons */
+.primary {
+    background: #6c5ce7;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.secondary {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.search-input {
+    padding: 12px;
+    width: 350px;
+    border-radius: 8px;
+    border: 1px solid #6c5ce7;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    outline: none;
+}
+
+.login-btn a {
+    padding: 8px 18px;
+    border: 1px solid #6c5ce7;
+    border-radius: 20px;
+    color: #6c5ce7;
+    font-weight: 500;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain FIR System</title>
+    <link rel="stylesheet" href="styl.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav>
+        <h2>⚖️ FIRChain</h2>
+        <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="support.html">Support</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="login-btn"><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="content">
+            <h1>Blockchain-Based <br><span>FIR Management</span></h1>
+            <p>Secure • Transparent • Tamper-Proof</p>
+            <div class="buttons">
+                <button class="primary" id="registerFirBtn">Register FIR</button>
+                <button class="secondary" id="trackfirBtn">Track FIR</button>
+            </div>
+        </div>
+        <div id="three-container"></div>
+    </section>
+
+    <section class="features">
+        <div class="card">🔐 Immutable Records</div>
+        <div class="card">⏱️ Real-Time Tracking</div>
+        <div class="card">📜 Blockchain Storage</div>
+        <div class="card">👮 Verified Authority</div>
+    </section>
+
+    <section id="about" class="content-section">
+        <div class="glass-card">
+            <h2>The Technology Behind <span>Justice</span></h2>
+            <div class="tech-grid">
+                <div class="tech-box">
+                    <i class="fas fa-link"></i>
+                    <h4>Immutability</h4>
+                    <p>Records cannot be edited or deleted once hashed.</p>
+                </div>
+                <div class="tech-box">
+                    <i class="fas fa-file-contract"></i>
+                    <h4>Smart Contracts</h4>
+                    <p>Automated case assignment and verification logic.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="support" class="content-section">
+        <div class="glass-card">
+            <h2>System <span>Support</span> & Tracking</h2>
+            <div class="search-box-container">
+                <input type="text" placeholder="Enter FIR Hash (0x...)" class="search-input">
+                <button class="primary">Track Status</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+const logoutBtn = document.getElementById("logoutBtn");
+
+if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+        localStorage.clear();
+        window.location.href = "homepage.html";
+    });
+}
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+    <script src="scrip.js"></script>
+</body>
+</html>

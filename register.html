@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain FIR | Register Identity</title>
+    <link rel="stylesheet" href="reegister.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="glass-container">
+        <div class="register-box">
+            <div class="header">
+                <i class="fas fa-user-plus logo-icon"></i>
+                <h2>Create Account</h2>
+                <p>Join the Secure FIR Network</p>
+            </div>
+
+            <form id="registerForm">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="fullname" placeholder="Full Name" required />
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-phone"></i>
+                    <input type="tel" id="phone" placeholder="Phone Number" pattern="[0-9]{10}" maxlength="10" required />
+                </div>
+                
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" placeholder="Email" required />
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="Password" required />
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-shield-check"></i>
+                    <input type="password" id="confirmpassword" placeholder="Confirm Password" required />
+                </div>
+                
+                <p id="passError" class="error-msg"></p>
+                <button type="submit" id="createAccount" class="primary-btn">Create Blockchain Identity</button>
+            </form>
+
+            <p class="footer-text">Already registered? <a href="login.html">Login here</a></p>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

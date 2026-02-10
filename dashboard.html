@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+
+    <!-- INTERNAL CSS -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f3f6;
+        }
+
+        .navbar {
+            background: #1a73e8;
+            color: white;
+            padding: 15px 20px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #00000030;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        #firList {
+            list-style: none;
+            padding: 0;
+        }
+
+        .fir-box {
+            background: #e9f0ff;
+            padding: 15px;
+            margin: 12px 0;
+            border-left: 6px solid #1a73e8;
+            border-radius: 6px;
+        }
+
+        .fir-box span {
+            font-weight: bold;
+        }
+
+        .no-data {
+            color: #777;
+            font-size: 18px;
+        }
+
+        .logout-btn {
+            background: red;
+            color: white;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            float: right;
+            margin-top: -5px;
+        }
+        .logout-btn:hover{
+            background: darkred;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        FIR Dashboard
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <div class="container">
+        <h2>Your Filed FIRs</h2>
+
+        <ul id="firList">
+           <li class="no-data">Loading your FIRs....</li>
+        </ul>
+
+        <a href="evidence.html">
+            <button>Add an Evidence</button>
+        </a>
+
+    </div>
+
+    <script type="module" src="dashboard.js"></script>
+
+    <!-- <script>
+        function logout() {
+            alert("Logging out...");
+            window.location.href = "login.html";
+        }
+    </script> -->
+
+    <script>
+        // --- 1. Security Check (Page load hote hi check karega) ---
+        // Agar user logged in nahi hai, to ise foran nikaal do
+        if (localStorage.getItem("isLoggedIn") !== "true") {
+            window.location.href = "login.html"; // Ya jo bhi aapke login page ka naam hai
+        }
+
+        // --- 2. Correct Logout Function ---
+        function logout() {
+            // Memory se data delete karein
+            localStorage.removeItem("isLoggedIn");
+            localStorage.removeItem("userName");
+            localStorage.removeItem("userRole");
+            localStorage.removeItem("userPhone");
+            localStorage.removeItem("userWallet"); // Agar metamask use kiya hai
+
+            alert("Logging out safely...");
+            
+            // Redirect to homepage
+            window.location.href = "homepage.html"; 
+        }
+    </script>
+
+
+</body>
+</html>

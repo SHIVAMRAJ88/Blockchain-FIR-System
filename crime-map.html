@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>India Crime Mapping – 28 States</title>
+  <link rel="stylesheet" href="mapstyle.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <style>
+    #map {
+      height: 600px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Crime Mapping System – India </h2>
+
+<div class="map-controls">
+    <button onclick="window.location.href='crime-map2.html'" class="nav-btn">
+       View Crime Ratio
+    </button>
+    <button onclick="window.location.href='homepage.html'" class="back-btn">
+      Back to Home
+    </button>
+</div>
+<div id="map"></div>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="map-logic.js"></script>
+
+<script>
+  // India centered map
+  var map = L.map('map').setView([22.9734, 78.6569], 5);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap'
+  }).addTo(map);
+
+  // Plot states
+  crimeData.forEach(state => {
+    L.circleMarker([state.lat, state.lng], {
+      radius: state.count / 2,
+      color: "red",
+      fillColor: "red",
+      fillOpacity: 0.6
+    })
+    .addTo(map)
+    .bindPopup(`
+      <b>State:</b> ${state.state}<br>
+      <b>Major Crime:</b> ${state.crime}<br>
+      <b>Total Cases:</b> ${state.count}
+    `);
+  });
+</script>
+
+</body>
+</html>

@@ -65,6 +65,20 @@ window.addEventListener("resize", () => {
     renderer.setSize(container.clientWidth, container.clientHeight);
 });
 
+// Crime Map Button Logic
+const viewCrimeMapBtn = document.getElementById("viewCrimeMapBtn");
+if (viewCrimeMapBtn) {
+    viewCrimeMapBtn.addEventListener("click", () => {
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+        if (isLoggedIn === "true") {
+            window.location.href = "crime-map.html"; // Map page par bhej do
+        } else {
+            alert("Please login to view the Crime Map!");
+            window.location.href = "login.html";
+        }
+    });
+}
+
 // FIR Registration Button Logic
 const registerBtn = document.getElementById("registerFirBtn");
 if (registerBtn) {

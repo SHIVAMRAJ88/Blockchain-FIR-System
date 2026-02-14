@@ -1,12 +1,13 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } 
-    from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-import { getDatabase } 
-    from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
 
 import { initializeApp } from "firebase/app";
+import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } 
+    from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getDatabase, ref, set } from "firebase/database";
+
+
+
+
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,

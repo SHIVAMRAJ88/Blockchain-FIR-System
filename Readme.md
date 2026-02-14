@@ -1,3 +1,6 @@
+Description:
+In this project we have to create a webpage where users can file their FIR reports to the Police and can use the app to track their FIR status. To implement the blockchain immutability into the system we will use SHA256 hashing algorithm. It will be very helpful in securing the system as the blockchain algorithm can prevent in evidence manipulation and allow for transparency in investigation.
+
 # FIRChain: Blockchain-Based FIR Management System
 
 An immutable and transparent First Information Report (FIR) system leveraging **Blockchain technology** for data integrity and **Firebase** for secure user management.

@@ -91,37 +91,45 @@
             padding: 0;
         }
 
-        .fir-box {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            margin: 15px 0;
-            border-left: 5px solid #6c5ce7;
-            border-radius: 12px;
-            transition: 0.3s;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
-        }
+       /* FIR Box ko zyada visible banane ke liye */
+.fir-box {
+    background: rgba(0, 0, 0, 0.4); /* Thoda aur dark background */
+    padding: 25px;
+    margin: 20px 0;
+    border-left: 5px solid #6c5ce7;
+    border-radius: 16px;
+    transition: 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Light border visibility ke liye */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
 
-        .fir-box:hover {
-            transform: translateX(10px);
-            background: rgba(108, 92, 231, 0.1);
-        }
+.fir-box:hover {
+    transform: translateY(-5px);
+    background: rgba(108, 92, 231, 0.15);
+    border-color: rgba(108, 92, 231, 0.5);
+}
 
-        .fir-box div {
-            margin: 5px 0;
-            font-size: 14px;
-            color: #ccc;
-        }
+/* Labels (Victim, Location etc.) */
+.fir-box div {
+    font-size: 13px;
+    color: #a29bfe; /* Purple-ish tint labels ke liye */
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
 
-        .fir-box span {
-            font-weight: 600;
-            color: #fff;
-            display: block;
-            font-size: 15px;
-            margin-top: 2px;
-        }
+/* Main Data (Actual Name, ID etc.) */
+.fir-box span {
+    font-weight: 600;
+    color: #ffffff !important; /* Pure white text */
+    display: block;
+    font-size: 16px;
+    margin-top: 5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Text par shadow taaki background se alag dikhe */
+}
 
         /* Evidence Button Styling */
         .evidence-btn-container {

@@ -103,3 +103,26 @@ if (trackfirBtn) {
         }
     });
 }
+
+// --- System & Tracking Connection ---
+const trackStatusBtn = document.getElementById("trackStatusBtn");
+const hashInput = document.getElementById("firHashInput");
+
+if (trackStatusBtn) {
+    trackStatusBtn.addEventListener("click", () => {
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+        const hashValue = hashInput ? hashInput.value.trim() : "";
+
+        if (isLoggedIn === "true") {
+            if (hashValue !== "") {
+                // User ko details page par le jao Hash ke saath
+                window.location.href = `fir-details.html?hash=${hashValue}`;
+            } else {
+                alert("Enter FIR Hash ID !");
+            }
+        } else {
+            alert("You should be login for tracking");
+            window.location.href = "login.html";
+        }
+    });
+}

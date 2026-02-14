@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | FIR Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS Section --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at top left, #151a33, #0b0f1a);
+            color: white;
+            min-height: 100vh;
+            padding: 40px;
+        }
+
+        /* --- New Header with Logout Styling --- */
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto 25px auto;
+        }
+
+        .logout-btn {
+            background: rgba(231, 76, 60, 0.15);
+            color: #ff7675;
+            border: 1px solid rgba(231, 76, 60, 0.3);
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logout-btn:hover {
+            background: #e74c3c;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .admin-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h2 {
+            color: #a29bfe;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        th {
+            color: #a29bfe;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            background: #6c5ce7;
+            color: white;
+        }
+
+        select {
+            background: #1a1f3c;
+            color: white;
+            border: 1px solid rgba(108, 92, 231, 0.5);
+            padding: 8px;
+            border-radius: 5px;
+            outline: none;
+            width: 150px;
+        }
+
+        .assign-btn {
+            background: #2ed573;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .assign-btn:hover {
+            background: #26af5f;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="admin-header">
+        <h2><i class="fas fa-user-shield"></i> Admin Panel</h2>
+        <button class="logout-btn" id="logoutAdminBtn">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+    </div>
+
+    <div class="admin-container">
+        <h3 style="color: #ccc; margin-bottom: 10px;">FIR Assignment Portal</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>FIR ID</th>
+                    <th>Victim</th>
+                    <th>Crime Type</th>
+                    <th>Status</th>
+                    <th>Assign Officer</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="adminFirList">
+                <tr>
+                    <td colspan="6" style="text-align:center; padding:20px;">Fetching records...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, get, update } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCEp1wVblbrb7rY-gqMQyiJLcQVQteecq8",
+            authDomain: "fir-system-5a87b.firebaseapp.com",
+            databaseURL: "https://fir-system-5a87b-default-rtdb.firebaseio.com",
+            projectId: "fir-system-5a87b",
+            storageBucket: "fir-system-5a87b.firebasestorage.app",
+            messagingSenderId: "240923702550",
+            appId: "1:240923702550:web:23ea3d84ed6817ce0f8c37"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // ✅ Logout Logic: Session clear karke wapas login par bheje
+        document.getElementById("logoutAdminBtn").addEventListener("click", () => {
+            localStorage.clear(); 
+            window.location.href = "login.html"; 
+        });
+
+        async function loadAdminDashboard() {
+            const firListUI = document.getElementById("adminFirList");
+            try {
+                const firsRef = ref(db, "FIRs");
+                const usersRef = ref(db, "users");
+                const [firSnap, userSnap] = await Promise.all([get(firsRef), get(usersRef)]);
+
+                if (!firSnap.exists()) {
+                    firListUI.innerHTML = "<tr><td colspan='6' style='text-align:center;'>No FIRs found.</td></tr>";
+                    return;
+                }
+
+                const officers = [];
+                userSnap.forEach(child => {
+                    const user = child.val();
+                    if (user.role === "police") {
+                        officers.push({ id: child.key, name: user.fullname });
+                    }
+                });
+
+                firListUI.innerHTML = "";
+                const firsData = firSnap.val();
+
+                Object.keys(firsData).forEach(key => {
+                    const fir = firsData[key];
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td><b>${fir.firID}</b></td>
+                        <td>${fir.victim?.name || "N/A"}</td>
+                        <td>${fir.crime?.crimeType || "N/A"}</td>
+                        <td><span class="status-badge">${fir.status || "Pending"}</span></td>
+                        <td>
+                            <select id="officer_${key}">
+                                <option value="" disabled ${!fir.assignedOfficer ? 'selected' : ''}>Select Officer</option>
+                                ${officers.map(off => `
+                                    <option value="${off.id}" ${fir.assignedOfficer === off.id ? 'selected' : ''}>${off.name}</option>
+                                `).join('')}
+                            </select>
+                        </td>
+                        <td>
+                            <button class="assign-btn" data-key="${key}" data-id="${fir.firID}">Assign</button>
+                        </td>
+                    `;
+                    firListUI.appendChild(row);
+                });
+
+                document.querySelectorAll(".assign-btn").forEach(btn => {
+                    btn.addEventListener("click", () => {
+                        const key = btn.getAttribute("data-key");
+                        const firID = btn.getAttribute("data-id");
+                        assignFirToOfficer(key, firID);
+                    });
+                });
+            } catch (err) { console.error(err); }
+        }
+
+        async function assignFirToOfficer(dbKey, firID) {
+            const officerId = document.getElementById(`officer_${dbKey}`).value;
+            if (!officerId) return alert("Select an officer!");
+            try {
+                const updates = {};
+                updates[`/FIRs/${dbKey}/assignedOfficer`] = officerId;
+                updates[`/FIRs/${dbKey}/status`] = "Assigned to Officer";
+                await update(ref(db), updates);
+                alert(`FIR ${firID} Assigned!`);
+                loadAdminDashboard();
+            } catch (err) { alert(err.message); }
+        }
+
+        window.onload = loadAdminDashboard;
+    </script>
+</body>
+</html>

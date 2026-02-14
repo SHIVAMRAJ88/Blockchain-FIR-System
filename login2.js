@@ -5,17 +5,19 @@ from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { getDatabase, ref, get } 
 from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
+import { initializeApp } from "firebase/app";
+
 const firebaseConfig = {
-  apiKey: "AIzaSyCEp1wVblbrb7rY-gqMQyiJLcQVQteecq8",
-  authDomain: "fir-system-5a87b.firebaseapp.com",
-  databaseURL: "https://fir-system-5a87b-default-rtdb.firebaseio.com", 
-  projectId: "fir-system-5a87b",
-  storageBucket: "fir-system-5a87b.firebasestorage.app",
-  messagingSenderId: "240923702550",
-  appId: "1:240923702550:web:23ea3d84ed6817ce0f8c37"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
+
 const auth = getAuth(app);
 const db = getDatabase(app);
 

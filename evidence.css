@@ -1,80 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
 body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(120deg, #141E30, #243B55);
-      min-height: 800px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    /* Deep background */
+    background: radial-gradient(circle at center, #1e2a44 0%, #0f0c29 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff; /* Global text color: Pure White */
+}
 
-    .container {
-      background: white;
-      padding: 35px;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 450px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-    }
+.container {
+    background: rgba(255, 255, 255, 0.08); /* Transparent glass */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Bright border for visibility */
+    width: 95%;
+    max-width: 500px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+}
 
-    h1 {
-      text-align: center;
-      color: #243B55;
-      margin-bottom: 20px;
-    }
+h1 {
+    text-align: center;
+    color: #ffffff; /* Pure White Heading */
+    text-shadow: 0 0 15px rgba(162, 155, 254, 0.5); /* Glow for visibility */
+    margin-bottom: 30px;
+    font-size: 28px;
+}
 
-    label {
-      font-weight: bold;
-    }
+/* Label Visibility Fix */
+label {
+    display: block;
+    font-weight: 600;
+    color: #a29bfe; /* Light Purple - ye dark par bahut saaf dikhta hai */
+    font-size: 13px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
 
-    input[type="file"],
-    textarea,
-    input[type="text"] {
-      width: 100%;
-      padding: 10px;
-      margin-top: 8px;
-      margin-bottom: 12px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 14px;
-    }
+/* Input Fields Visibility Fix */
+input[type="text"],
+input[type="file"],
+textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 25px;
+    background: rgba(0, 0, 0, 0.4); /* Dark background for input */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Lighter border */
+    border-radius: 12px;
+    color: #ffffff !important; /* Force text to be White */
+    font-size: 15px;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
 
-    textarea {
-      height: 90px;
-      resize: none;
-    }
+/* Placeholder color fix */
+input::placeholder, textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5); /* Semi-white placeholder */
+}
 
-    button {
-      width: 100%;
-      margin-top: 15px;
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: bold;
-      background: #243B55;
-      color: white;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #6c5ce7;
+    box-shadow: 0 0 15px rgba(108, 92, 231, 0.4);
+}
 
-    button:hover {
-      background: #141E30;
-    }
+/* Button Styling */
+button[type="submit"] {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(108, 92, 231, 0.4);
+}
 
-    #hashResult {
-      margin-top: 15px;
-      font-size: 13px;
-      color: green;
-      word-break: break-all;
-      text-align: center;
-    }
+/* Hash result visibility */
+#hashResult {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(46, 213, 115, 0.1);
+    border: 1px solid #2ed573;
+    color: #2ed573; /* Bright Green */
+    border-radius: 10px;
+    font-weight: bold;
+    word-break: break-all;
+}
 
-    .back-btn {
-      margin-top: 15px;
-      text-align: center;
-    }
-
-    .back-btn button {
-      background: #555;
-    }
+.back-btn button {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    margin-top: 20px;
+    padding: 10px 20px;
+    width: auto;
+    cursor: pointer;
+}

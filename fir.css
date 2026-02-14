@@ -1,102 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* --- 1. DYNAMIC BACKGROUND (STAYS ANIMATED) --- */
 body {
-        font-family: Arial, Helvetica, sans-serif;
-        background-color: #f0f4f8;
-        margin: 0;
-        padding: 0;
-    }
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    min-height: 100vh;
+    
+    /* Dynamic moving background */
+    background: radial-gradient(circle at center, #1e2a44 0%, #0f0c29 100%);
+    background-size: 200% 200%;
+    animation: gradientMove 12s ease infinite;
+    
+    display: flex;
+    flex-direction: column;
+}
 
-    /* Navbar */
-    .navbar {
-        width: 100%;
-        background-color: #1a73e8;
-        color: white;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 25px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-    }
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
-    .navbar h1 {
-        margin: 0;
-        font-size: 22px;
-       
-        
-    }
+/* --- 2. NAVBAR --- */
+.navbar {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
 
-    .logout-btn {
-        background-color: red;
-        color: white;
-        border: none;
-        padding: 8px 16px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 14px;
-    }
+.navbar h1 {
+    margin: 0;
+    font-size: 20px;
+    letter-spacing: 2px;
+    background: linear-gradient(to right, #fff, #a29bfe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+}
 
-    .logout-btn:hover {
-        background-color: darkred;
-    }
+.logout-btn {
+    background: linear-gradient(135deg, #ff4d4d, #c0392b);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(255, 77, 77, 0.3);
+}
 
-    /* Container */
-    .container {
-        max-width: 600px;
-        margin: 40px auto;
-        background-color: #fff;
-        padding: 30px 40px;
-        border-radius: 15px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
+.logout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 77, 77, 0.5);
+}
 
-    h2 {
-        color: #555;
-        margin-bottom: 15px;
-        border-bottom: 1px solid #ddd;
-        padding-bottom: 5px;
-    }
+/* --- 3. FORM CONTAINER (ORIGINAL DIMENSIONS RESTORED) --- */
+.container {
+    max-width: 550px;      /* Pehle wala dimension */
+    width: 90%;            /* Responsive width */
+    margin: 50px auto;     /* Centered alignment */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    padding: 40px;         /* Pehle wala padding */
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    animation: slideIn 0.8s ease-out;
+    box-sizing: border-box; /* Zaruri: ensures padding stays inside the 550px */
+}
 
-    /* Form Inputs */
-    input[type="text"],
-    input[type="tel"],
-    textarea {
-        width: 100%;
-        padding: 12px 15px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        font-size: 15px;
-        transition: 0.3s;
-    }
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-    input:focus,
-    textarea:focus {
-        border-color: #007BFF;
-        outline: none;
-        box-shadow: 0 0 5px rgba(0,123,255,0.3);
-    }
+h2 {
+    color: #a29bfe;
+    font-size: 18px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-    textarea {
-        resize: vertical;
-        min-height: 80px;
-    }
+h2::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: rgba(162, 155, 254, 0.3);
+}
 
-    button[type="submit"] {
-        width: 100%;
-        padding: 15px;
-        background-color: #007BFF;
-        border: none;
-        border-radius: 8px;
-        color: white;
-        font-size: 16px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        margin-top: 10px;
-    }
+/* --- 4. INPUTS --- */
+input[type="text"],
+input[type="tel"],
+textarea {
+    width: 100%;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    font-size: 14px;
+    color: #fff;
+    transition: all 0.3s;
+    box-sizing: border-box; /* Zaruri: makes sure inputs don't overflow the container */
+}
 
-    button[type="submit"]:hover {
-        background-color: #0056b3;
-        transform: scale(1.02);
-    }
+input:focus,
+textarea:focus {
+    border-color: #6c5ce7;
+    background: rgba(0, 0, 0, 0.3);
+    outline: none;
+    box-shadow: 0 0 15px rgba(108, 92, 231, 0.2);
+}
+
+textarea {
+    resize: none;
+    min-height: 100px;
+}
+
+/* --- 5. SUBMIT BUTTON --- */
+button[type="submit"] {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(108, 92, 231, 0.5);
+    background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+}
+
+#error {
+    display: block;
+    margin-top: -15px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}

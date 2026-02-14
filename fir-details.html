@@ -3,64 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FIR Details</title>
+    <title>FIR Official Details | Blockchain Verified</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at center, #1e2a44 0%, #0f0c29 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .container { grid-template-columns: 1fr; }
+        }
+
+        header {
+            grid-column: 1 / -1;
+            text-align: center;
+            border-bottom: 2px solid rgba(108, 92, 231, 0.3);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* --- VISIBILITY FIX SECTION --- */
+        /* Ye wahi section hai jo aapki screenshot mein white dikh raha hai */
+        #firDetails {
+            background: rgba(0, 0, 0, 0.4) !important; /* Dark background force kiya hai */
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff !important; /* Text color pure white */
+        }
+
+        /* Agar JS koi extra div inject kare toh uska background remove karne ke liye */
+        #firDetails div, .white-box-fix {
+            background: transparent !important;
+            color: white !important;
+        }
+
+        h2 {
+            font-size: 18px;
+            color: #a29bfe;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-item {
+            margin-bottom: 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 10px;
+        }
+
+        .info-label {
+            display: block;
+            font-size: 12px;
+            color: #a29bfe;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .info-value {
+            display: block;
+            font-size: 15px;
+            color: #fff;
+            margin-top: 5px;
+            word-break: break-all;
+        }
+
+        /* Blockchain Hash specifically readable banane ke liye */
+        .hash-style {
+            background: rgba(46, 213, 115, 0.1);
+            color: #2ed573;
+            padding: 12px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 13px;
+            border: 1px solid rgba(46, 213, 115, 0.2);
+            margin-top: 5px;
+        }
+
+        .evidence-info {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .back-btn {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-btn a {
+            text-decoration: none;
+            color: white;
+            background: rgba(108, 92, 231, 0.2);
+            padding: 12px 30px;
+            border-radius: 50px;
+            border: 1px solid #6c5ce7;
+            transition: 0.3s;
+        }
+
+        .back-btn a:hover {
+            background: #6c5ce7;
+        }
+    </style>
 </head>
 <body>
-    <h1>FIR Details</h1>
-    <div id="firDetails"></div>
 
-    <hr>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-fingerprint"></i> SECURE CASE DOSSIER</h1>
+        </header>
 
-    <h2>Evidence & Hash (Police Only)</h2>
+        <div class="case-info">
+            <h2><i class="fas fa-user-shield"></i> Victim & Crime Info</h2>
+            <div id="firDetails">
+                <p>Fetching Blockchain Data...</p>
+            </div>
+        </div>
 
-    <ul id="evidenceList">
-        <li>Loading evidences...</li>
-    </ul>
+        <div class="evidence-info">
+            <h2><i class="fas fa-database"></i> Blockchain Evidence</h2>
+            <ul id="evidenceList" style="list-style: none; padding: 0;">
+                <li style="color: #888;">No digital evidence attached yet.</li>
+            </ul>
+        </div>
 
+        <div class="back-btn">
+            <a href="dashboard.html"><i class="fas fa-arrow-left"></i> Return to Dashboard</a>
+        </div>
+    </div>
 
     <script type="module" src="firDetails.js"></script>
-
-
-        
 </body>
 </html>
-
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FIR Details</title>
-</head>
-<body>
-
-    <h1>FIR Details</h1>
-    <div id="firDetails"></div>
-
-    <hr> -->
-
-    <!-- 🔍 Investigation Status (Police Only) -->
-    <!-- <h2>Investigation Status</h2>
-
-    <select id="investigationStatus">
-        <option>Not Started</option>
-        <option>In Progress</option>
-        <option>Evidence Collected</option>
-        <option>Closed</option>
-    </select>
-
-    <button onclick="saveInvestigationStatus()">Update Status</button>
-
-    <hr>
-
-    <h2>Evidence & Hash (Police Only)</h2>
-
-    <ul id="evidenceList">
-        <li>Loading evidences...</li>
-    </ul>
-
-    <script type="module" src="firDetails.js"></script>
-
-</body>
-</html> -->
